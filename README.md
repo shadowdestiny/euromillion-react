@@ -8,6 +8,7 @@ Para correr el proyecto solo debes tener docker instalado en tu Sistema operativ
 Luego correr los siguientes comandos:
 
 ### Esta linea crea una imagen con el nombre *euromillion-react*
+
 <code>     
     docker build -t euromillion-react .
 </code>
@@ -20,3 +21,5 @@ Luego debemos ejecutar la imagen de nuestro proyecto con el siguiente comando
 </code>
 
 React por defecto se ejecuta en el puerto 3000, si tienes otro proceso corriendo en este puerto, puedes cambiar el primer parametro 3000:3000 a 3001:3000 para redireccionar el puerto del servidor que sale de 3000 a 3001
+
+Listo! puedes entrar a tu navegador y visualizar el componente select
