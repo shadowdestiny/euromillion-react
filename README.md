@@ -7,15 +7,15 @@ Para correr el proyecto solo debes tener docker instalado en tu Sistema operativ
 
 Luego correr los siguientes comandos:
 
-<code>
-    # Esta linea crea una imagen con el nombre *euromillion-react* 
+### Esta linea crea una imagen con el nombre *euromillion-react*
+<code>     
     docker build -t euromillion-react .
 </code>
 
 Luego debemos ejecutar la imagen de nuestro proyecto con el siguiente comando
 
-<code>
-    # Este comando ejecuta la imagen en el puerto 3000.
+ ### Este comando ejecuta la imagen en el puerto 3000.
+<code>   
     docker run -p 3000:3000 -d euromillion-react
 </code>
 
