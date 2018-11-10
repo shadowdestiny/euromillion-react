@@ -9,19 +9,11 @@ class CountrySelect extends Component {
         super(props, context);
         this.state = {
             countries       : [],
-            country_selected : 'Seleccione'
+            country_selected : {}
         };
     }
 
     componentWillMount() {
-        // validando si el usuario se encuentra logueado
-
-        this.setState({
-            countries : [{
-                value : 1,
-                label : "uno",
-            }]
-        });
 
         axios.get('https://restcountries.eu/rest/v2/all').then((response) => {
             console.log(response.data);
@@ -34,33 +26,41 @@ class CountrySelect extends Component {
                     value:element.numericCode
                 });
             });
-
             this.setState({
-                countries
+                countries,
+                country_selected : countries.find(function(element) {
+                    return element.label === "Spain";
+                }),
             });
         });
     }
 
-    saveCountry(data) {
+    saveCountry(value) {
         this.setState({
-            country_selected: data
+            country_selected: this.state.countries.find(function(element) {
+                return element.value === value;
+            })
         });
     }
 
     render() {
         return (
-            <div>
-                <label htmlFor="countrySelect">Paises</label>
-                <Select
-                    id="countrySelect"
-                    autoFocus
-                    simpleValue
-                    name="countrySelect"
-                    options={this.state.countries}
-                    value={this.state.country_selected}
-                    placeholder="Seleccione un pais"
-                    onChange={this.saveCountry.bind(this)}
-                />
+            <div className="row">
+                <div className="col-md-6">
+                    <Select
+                        id="countrySelect"
+                        autoFocus
+                        simpleValue
+                        name="countrySelect"
+                        options={this.state.countries}
+                        value={this.state.country_selected}
+                        placeholder="Seleccione un pais"
+                        onChange={this.saveCountry.bind(this)}
+                    />
+                </div>
+                <div className="col-md-6">
+                    <label htmlFor="countrySelect">{ this.state.country_selected.label }</label>
+                </div>
             </div>
         );
     }
